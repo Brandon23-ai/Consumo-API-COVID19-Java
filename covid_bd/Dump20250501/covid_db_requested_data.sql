@@ -16,31 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `provinces`
+-- Table structure for table `requested_data`
 --
 
-DROP TABLE IF EXISTS `provinces`;
+DROP TABLE IF EXISTS `requested_data`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `provinces` (
+CREATE TABLE `requested_data` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `iso` varchar(255) DEFAULT NULL,
-  `lat` varchar(255) DEFAULT NULL,
-  `lon` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `province` varchar(255) DEFAULT NULL,
+  `reportDate` date DEFAULT NULL,
+  `requestDateTime` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `provinces`
+-- Dumping data for table `requested_data`
 --
 
-LOCK TABLES `provinces` WRITE;
-/*!40000 ALTER TABLE `provinces` DISABLE KEYS */;
-INSERT INTO `provinces` VALUES (1,'GTM','15.7835','-90.2308','Guatemala','');
-/*!40000 ALTER TABLE `provinces` ENABLE KEYS */;
+LOCK TABLES `requested_data` WRITE;
+/*!40000 ALTER TABLE `requested_data` DISABLE KEYS */;
+INSERT INTO `requested_data` VALUES (1,'GTM','2021-02-01','2025-04-30 03:36:37.197035'),(2,'GTM','2021-02-01','2025-05-01 16:53:50.561688'),(3,'GTM','2020-12-01','2025-05-01 17:04:34.282494'),(4,'GTM','2021-06-22','2025-05-01 17:05:22.554669'),(5,'USA','2021-06-22','2025-05-01 17:07:42.798442'),(6,'USA','2021-06-22','2025-05-01 17:18:28.773595'),(7,'USA','2021-06-22','2025-05-01 17:36:57.324680'),(8,'USA','2020-12-31','2025-05-01 17:52:09.779615'),(9,'USA','2022-01-23','2025-05-01 18:00:50.982111'),(10,'USA','2020-07-10','2025-05-01 18:07:26.286086'),(11,'USA','2020-07-10','2025-05-01 18:24:22.651319'),(12,'USA','2020-11-02','2025-05-01 18:25:24.757308'),(13,'GTM','2020-11-02','2025-05-01 18:27:49.200402'),(14,'GTM','2020-11-02','2025-05-01 18:29:12.644493'),(15,'GTM','2020-11-02','2025-05-01 18:30:06.676297');
+/*!40000 ALTER TABLE `requested_data` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-26 17:16:30
+-- Dump completed on 2025-05-01 13:43:27

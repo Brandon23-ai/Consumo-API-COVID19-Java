@@ -1,12 +1,15 @@
-C:\Users\btmor\OneDrive\Documentos\NetBeansProjects\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\models\Provinces.java
-C:\Users\btmor\OneDrive\Documentos\NetBeansProjects\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\services\ProvincesService.java
-C:\Users\btmor\OneDrive\Documentos\NetBeansProjects\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\threads\AppConfig.java
-C:\Users\btmor\OneDrive\Documentos\NetBeansProjects\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\dtos\CovidDTOReports.java
-C:\Users\btmor\OneDrive\Documentos\NetBeansProjects\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\dtos\RegionDTO.java
-C:\Users\btmor\OneDrive\Documentos\NetBeansProjects\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\ProyectoAPI.java
-C:\Users\btmor\OneDrive\Documentos\NetBeansProjects\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\services\RegionService.java
-C:\Users\btmor\OneDrive\Documentos\NetBeansProjects\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\services\ReportsService.java
-C:\Users\btmor\OneDrive\Documentos\NetBeansProjects\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\dtos\ProvincesDTO.java
-C:\Users\btmor\OneDrive\Documentos\NetBeansProjects\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\models\Reports.java
-C:\Users\btmor\OneDrive\Documentos\NetBeansProjects\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\models\Region.java
-C:\Users\btmor\OneDrive\Documentos\NetBeansProjects\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\threads\ApiDataLoader.java
+C:\Users\btmor\OneDrive\Desktop\Proyecto Consumo API  COVID-19\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\threads\ApiDataLoader.java
+C:\Users\btmor\OneDrive\Desktop\Proyecto Consumo API  COVID-19\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\threads\AppConfig.java
+C:\Users\btmor\OneDrive\Desktop\Proyecto Consumo API  COVID-19\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\dtos\ProvincesDTO.java
+C:\Users\btmor\OneDrive\Desktop\Proyecto Consumo API  COVID-19\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\models\RequestedData.java
+C:\Users\btmor\OneDrive\Desktop\Proyecto Consumo API  COVID-19\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\services\ProvincesService.java
+C:\Users\btmor\OneDrive\Desktop\Proyecto Consumo API  COVID-19\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\services\RequestedDataService.java
+C:\Users\btmor\OneDrive\Desktop\Proyecto Consumo API  COVID-19\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\models\Region.java
+C:\Users\btmor\OneDrive\Desktop\Proyecto Consumo API  COVID-19\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\models\Reports.java
+C:\Users\btmor\OneDrive\Desktop\Proyecto Consumo API  COVID-19\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\ProyectoAPI.java
+C:\Users\btmor\OneDrive\Desktop\Proyecto Consumo API  COVID-19\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\models\Provinces.java
+C:\Users\btmor\OneDrive\Desktop\Proyecto Consumo API  COVID-19\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\repositories\ExecutedReportRepository.java
+C:\Users\btmor\OneDrive\Desktop\Proyecto Consumo API  COVID-19\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\services\ReportsService.java
+C:\Users\btmor\OneDrive\Desktop\Proyecto Consumo API  COVID-19\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\dtos\RegionDTO.java
+C:\Users\btmor\OneDrive\Desktop\Proyecto Consumo API  COVID-19\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\services\RegionService.java
+C:\Users\btmor\OneDrive\Desktop\Proyecto Consumo API  COVID-19\ProyectoAPI\src\main\java\com\mycompany\proyectoapi\dtos\CovidDTOReports.java

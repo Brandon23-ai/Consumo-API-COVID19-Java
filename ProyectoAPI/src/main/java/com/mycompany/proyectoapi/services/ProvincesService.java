@@ -24,17 +24,43 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class ProvincesService {
-    
     private static final Logger logger = LogManager.getLogger(ProvincesService.class);
-
     private static final String API_URL = "https://covid-19-statistics.p.rapidapi.com/provinces";
     private static final String API_KEY = "2505eda46amshc60713983b5e807p1da25ajsn36febcbf4a71";
-    
-    public List<ProvincesDTO> getProvincesFromAPI(String iso) {
-    logger.info(">>> Entrando al método getProvincesFromAPI()");
-    List<ProvincesDTO> provinces = new ArrayList<>();
 
-    try {
+    public List<ProvincesDTO> getProvincesFromAPI(String iso) {
+        logger.info(">>> Entrando al método getProvincesFromAPI()");
+        try {
+            String responseJson = sendGetRequest(iso);
+            return parseProvincesFromJson(responseJson);
+        } catch (Exception e) {
+            handleApiError(e);
+            return new ArrayList<>();
+        }
+    }
+
+    public void saveProvincesInDb(List<ProvincesDTO> provincesDTOs) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+
+        for (ProvincesDTO dto : provincesDTOs) {
+            if (!provinceExists(em, dto.getIso(), dto.getProvince())) {
+                Provinces entidad = convertDtoToEntity(dto);
+                em.persist(entidad);
+                logger.info("Provincia guardada : " + entidad.getName() + " - " + entidad.getProvince());
+            } else {
+                logger.info("Provincia ya existente: " + dto.getProvince() + " (ISO: " + dto.getIso() + ")");
+            }
+        }
+
+        em.getTransaction().commit();
+        em.close();
+        emf.close();
+    }
+
+    // ──────── Métodos privados ────────
+    private String sendGetRequest(String iso) throws IOException {
         String urlWithParams = API_URL + "?iso=" + iso;
         URL url = new URL(urlWithParams);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -49,54 +75,46 @@ public class ProvincesService {
         while ((line = in.readLine()) != null) {
             response.append(line);
         }
-
         in.close();
         logger.info("Respuesta completa de la API:");
-        System.out.println(response.toString());
+        logger.debug(response.toString());
+        return response.toString();
+    }
+    
+    //Metodo auxiliar para evitar respuesta Null 
+    private String getAsStringSafe(JsonObject obj, String memberName) {
+        JsonElement el = obj.get(memberName);
+        return (el != null && !el.isJsonNull()) ? el.getAsString() : "";
+    }
 
-        JsonObject jsonResponse = new Gson().fromJson(response.toString(), JsonObject.class);
+
+    private List<ProvincesDTO> parseProvincesFromJson(String json) {
+        List<ProvincesDTO> provinces = new ArrayList<>();
+        JsonObject jsonResponse = new Gson().fromJson(json, JsonObject.class);
         JsonArray data = jsonResponse.getAsJsonArray("data");
 
         for (JsonElement elem : data) {
             JsonObject obj = elem.getAsJsonObject();
-
             ProvincesDTO dto = new ProvincesDTO();
-            dto.setIso(obj.get("iso").getAsString());
-            dto.setName(obj.get("name").getAsString());
-            dto.setProvince(obj.get("province").getAsString());
-            dto.setLat(obj.get("lat").getAsString());
-            dto.setLon(obj.get("long").getAsString());
+
+            dto.setIso(getAsStringSafe(obj, "iso"));
+            dto.setName(getAsStringSafe(obj, "name"));
+            dto.setProvince(getAsStringSafe(obj, "province"));
+            dto.setLat(getAsStringSafe(obj, "lat"));
+            dto.setLon(getAsStringSafe(obj, "long"));
 
             provinces.add(dto);
         }
 
-        logger.info("Total provincias obtenidas: " + provinces.size());
-
-    } catch (Exception e) {
-        logger.error("Error al obtener provincias: "+ e);
+        logger.info("Total provincias parseadas: " + provinces.size());
+        return provinces;
     }
 
-    return provinces;
-}
 
-    
-    public void saveProvincesInDb(List<ProvincesDTO> provincesDTOs) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
-        EntityManager em = emf.createEntityManager();
-        
-        em.getTransaction().begin();
-
-        for (ProvincesDTO dto : provincesDTOs) {
-            Provinces entidad = convertDtoToEntity(dto);
-            em.persist(entidad);
-            logger.info("Guardado: " + entidad.getName() + " - " + entidad.getProvince());
-        }
-
-        em.getTransaction().commit();
-        em.close();
-        emf.close();
+    private void handleApiError(Exception e) {
+        logger.error("❌ Error al obtener provincias: ", e);
     }
-    
+
     private Provinces convertDtoToEntity(ProvincesDTO dto) {
         Provinces province = new Provinces();
         province.setIso(dto.getIso());
@@ -105,9 +123,18 @@ public class ProvincesService {
         province.setLat(dto.getLat());
         province.setLon(dto.getLon());
         return province;
-}
+    }
 
-
-   
+    private boolean provinceExists(EntityManager em, String iso, String provinceName) {
+        Long count = em.createQuery(
+                "SELECT COUNT(p) FROM Provinces p WHERE p.iso = :iso AND p.province = :province", Long.class)
+                .setParameter("iso", iso)
+                .setParameter("province", provinceName)
+                .getSingleResult();
+        return count > 0;
+    }
     
+
+
+ 
 }

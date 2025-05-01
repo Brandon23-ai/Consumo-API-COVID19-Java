@@ -1,12 +1,15 @@
+com\mycompany\proyectoapi\models\RequestedData.class
 com\mycompany\proyectoapi\services\ReportsService.class
 com\mycompany\proyectoapi\threads\ApiDataLoader.class
 com\mycompany\proyectoapi\dtos\RegionDTO.class
 com\mycompany\proyectoapi\models\Reports.class
 com\mycompany\proyectoapi\models\Provinces.class
+com\mycompany\proyectoapi\services\RequestedDataService.class
 com\mycompany\proyectoapi\threads\AppConfig.class
 com\mycompany\proyectoapi\dtos\CovidDTOReports.class
 com\mycompany\proyectoapi\models\Region.class
 com\mycompany\proyectoapi\services\ProvincesService.class
+com\mycompany\proyectoapi\repositories\ExecutedReportRepository.class
 com\mycompany\proyectoapi\dtos\ProvincesDTO.class
 com\mycompany\proyectoapi\ProyectoAPI.class
 com\mycompany\proyectoapi\services\RegionService.class
